@@ -30,8 +30,12 @@ THIS PROJECT IS FOR THE ITI GRADUATION PROJECT
 
 # REPO DEPARTMENTS
 1-the repo is organized in three apps with the core app which is the main and where the home page is viewed  
+
 2-accounts-app: every thing relate to login,logout,signup,forgetpass found in this app 
+
 3- users-app: every thing about the profiles and search found on it 
+
 4- books-app: contain all views about books,update,delete,add them too
+
 5-each app has its own templates folder
 
