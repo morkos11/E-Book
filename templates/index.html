@@ -6,9 +6,9 @@
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
       {% if request.user.is_authenticated %}
           {% if student %}
-             <a href="{% url 'user:student_profile' student_slug%} "><p class="btn-get-started" >welcome {{ request.user.username }}</p></a>
+             <a href="{% url 'user:student_profile' student_slug%} "><h2 class="btn-get-started" style="text-align: center" >welcome {{ request.user.username }}</h2></a>
           {% elif admin %}
-             <a href="{% url 'user:admin_profile' admin_slug%}"><p class="btn-get-started" >welcome {{ request.user.username }}</p></a>
+             <a href="{% url 'user:admin_profile' admin_slug%}"><h2 class="btn-get-started" style="text-align: center" >welcome {{ request.user.username }}</h2></a>
           {% else %}
               <h3>Please complete your regestiration data from <a href="{% url 'accounts:signup_complete' %}">here</a></h3>
           {% endif %}
@@ -30,7 +30,7 @@
             <div class="col-md-6 gx-5 mb-4">
               <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
                 <img src="{% static 'img/ebook.jpg' %}" class="img-fluid" />
-                <a href="#!">
+                <a href="">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
               </div>

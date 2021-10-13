@@ -9,6 +9,9 @@
         <section class="text-center">
           <div class="container">
                 <div class="row">
+                        {% if books|length == 0 %}
+                        <h1 style="text-align: center"> Numbers of borred BOOKS IS ZERO</h1>
+                        {% else %}
                         {% for book in books %}
                         <div class="col-lg-6 mb-4">
                           <div class="card">
@@ -33,6 +36,7 @@
                           </div>
                         </div>
                         {% endfor %}
+                        {% endif %}
           </div>
           </div>
         </section>

@@ -30,6 +30,27 @@ def all_students(request,slug):
     students = Student.objects.all()
     content = {'students':students}
     return render(request,'show_students.html',content)
+
+def search_student(request):
+    if request.method == 'POST':
+        id = request.POST['search']
+        if id == '':
+            student = None
+            content = {'student': student}
+            return render(request,'show_student.html',content)
+        check = Student.objects.filter(id=id).exists()
+        if check:
+            student = get_object_or_404(Student,id=id)
+        else:
+            student = 'not found'
+
+    else:
+        student = None
+    content = {'student':student}
+    return render(request,'show_student.html',content)
+
+
+
 def all_books(request,slug):
     books = Book.objects.all()
     content = {'books':books}

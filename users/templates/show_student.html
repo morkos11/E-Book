@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <div class="container">
+        <form method="POST" action="{% url 'user:search_student' %}">
+            {% csrf_token %}
+            <div class="card-body row no-gutters align-items-center" >
+                <div class="col-auto">
+                    <i class="fas fa-search h4 text-body"></i>
+                </div>
+                <!--end of col-->
+                <div class="col">
+                    <input class="form-control form-control-lg form-control-borderless" name="search" type="search" placeholder="Search With id">
+                </div>
+                <!--end of col-->
+                <div class="col-auto">
+                    <button class="btn btn-lg btn-success" type="submit">Search</button>
+                </div>
+                <!--end of col-->
+            </div>
+        </form>
+        <br>
+        {% if student == None%}
+
+        {% elif student != 'not found' %}
+        <hr class="my-5" />
+        <div >
+        <img src="{{student.profile_pic.url}}" class="rounded-circle" alt="" style="width:5%;height:3%;">
+        <span><a href="{{ student.get_absolute_url }}">{{ student.user.username }}</a></span>
+        {% else %}
+            <p>NOT FOUNDED</p>
+        {% endif %}
+    </div>
+    </div>
+<br>
+{% endblock %}

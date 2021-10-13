@@ -8,6 +8,7 @@ urlpatterns = [
     path('update-student/<slug>', views.UpdateStudent.as_view(), name='update_student'),
     path('admin/<slug>',views.admin_profile,name='admin_profile'),
     path('admin/<slug>/show-students',views.all_students,name='show_students'),
+    path('admin/search-student/',views.search_student,name='search_student'),
     path('admin/<slug>/show-books',views.all_books,name='show_books'),
     path('admin/<slug>/show-borred-books',views.all_borred_books,name='show_borred_books'),
 
