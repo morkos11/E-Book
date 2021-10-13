@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{%block content%}
+    <!--Main layout-->
+    <main class="mt-5">
+      <div class="container">
+        <!--Section: Content-->
+        <section class="text-center">
+          <div class="container">
+                <div class="row">
+                        {% for book in books %}
+                        <div class="col-lg-6 mb-4">
+                          <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                              <img
+                                src="{{book.cover.url}}"
+                                class="img-fluid"
+                                style="width: 275px;height: 300px"
+                              />
+                              <a href="{{book.book_file.url}}">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                              </a>
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title">{{book.name}}</h5>
+                              <p class="card-text">
+                                {{book.book_desc}}
+                              </p>
+                            </div>
+                              <a href="{% url 'books:delete_book' book.id %}" class="btn btn-outline-success btn-lg">Delete Book</a>
+                             <a href="{% url 'books:update_book' book.id %}" class="btn btn-outline-success btn-lg">Edit Book</a>
+                          </div>
+                        </div>
+                        {% endfor %}
+          </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!--Main layout-->
+
+{% endblock%}

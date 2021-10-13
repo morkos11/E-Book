@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main id="main">
+    <!--========MAIN PROFILE SECTION======-->
+    <section id="hero" class="d-flex justify-content-center align-items-center" style="background-image:url({{ student.profile_pic.url }})">
+
+    </section>
+    <!--========END MAIN PROFILE SECTION======-->
+    <!--========ABOUT SECTION======-->
+     <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>About</h2>
+          <p>About Me</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="{{ student.profile_pic.url }}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>Mr {{ student.user.get_full_name }}.</h3>
+            {% if student.bio  %}
+            <h3>My Bio.</h3>
+            <p class="font-italic">
+              {{ student.bio }}.
+            </p>
+            {% endif %}
+          </div>
+        </div>
+        <a href="{% url 'user:update_student' student.slug %}" class="btn btn-outline-success btn-lg">Edit profile</a>
+      </div>
+    </section>
+    <!--========END ABOUT SECTION======-->
+    {% if books %}
+        <section id="about" class="about">
+        <h4 class="mb-5"><strong>My Borred Books</strong></h4>
+        {% for book in books_items %}
+            <div class="row">
+            <div class="col-lg-4 col-md-12 mb-4">
+              <div class="card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img
+                    src="{{book.book.cover.url}}"
+                    class="img-fluid"
+                    style="width: 275px;height: 300px"
+                  />
+                  <a href="{{book.book.book_file.url}}">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{book.book.name}}</h5>
+                  <p class="card-text">
+                    {{book.book.book_desc}}
+                  </p>
+                    <a href="{{book.book.book_file.url}}" download class="btn btn-primary">Download</a>
+                    <a href="{% url 'books:return_book' book.book.id %}" class="btn btn-primary">Return Book</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </section>
+    {% endif %}
+    </main>
+{% endblock %}
+
+

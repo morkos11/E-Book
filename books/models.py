@@ -4,7 +4,7 @@ import time
 
 # Create your models here.
 class Book(models.Model):
-    name = models.CharField(max_length=35)
+    name = models.CharField(max_length=35,unique=True)
     cover = models.ImageField(upload_to='books-images')
     book_file = models.FileField(upload_to='books-files')
     book_desc = models.TextField()
@@ -18,23 +18,14 @@ class Book(models.Model):
         today_date = time.strftime("%Y-%m-%d")
         if today_date == str(self.return_date):
             self.is_borred = False
+            borred_book = BorredBook.objects.get(book__name=self.name)
+            borred_book.delete()
         super(Book,self).save(*args,**kwargs)
-
-class UserInfo(models.Model):
-    CHOICES = (
-        ('Admin','Admin'),
-        ('Student','Student')
-    )
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    user_type = models.CharField(max_length=25,choices=CHOICES)
-
-    def __str__(self):
-        return (self.user.username)
 
 class BorredBook(models.Model):
     book = models.OneToOneField(Book,on_delete=models.CASCADE)
-    user = models.ForeignKey(UserInfo,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
-        return (self.book.name+self.user.user.username)
+        return (self.book.name+'_'+self.user.username)
 

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main id="main">
+    <br>
+    {% for i in students %}
+    <div >
+        <img src="{{i.profile_pic.url}}" class="rounded-circle" alt="" style="width:5%;height:3%;">
+        <span><a href="{{ i.get_absolute_url }}">{{ i.user.username }}</a></span>
+    </div>
+    <hr class="my-5" />
+
+    {% endfor %}
+    </main>
+
+{% endblock %}

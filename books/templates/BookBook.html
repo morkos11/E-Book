@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<br>
+    <!--Section: Content-->
+    <section class="text-center">
+          <div class="row">
+            <div class="col-lg-4 col-md-12 mb-4">
+              <div class="card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img
+                    src="{{book.cover.url}}"
+                    class="img-fluid"
+                  />
+                  <a href="{{book.book_file.url}}">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{book.name}}</h5>
+                  <p class="card-text">
+                    {{book.book_desc}}
+                  </p>
+                </div>
+              <form method="POST">
+                  {% csrf_token %}
+                  <label for="birthday">Return Date:</label>
+                  <input type="date" id="birthday" name="return_date">
+                  <button type="submit" class="btn btn-primary btn-block mb-4">Book</button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </section>
+    <!--Section: Content-->
+<br>
+{% endblock %}

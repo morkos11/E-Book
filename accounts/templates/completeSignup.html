@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section style="background-image: url('{% static "img/signupbg.jpg" %}');background-repeat: no-repeat;background-size: auto;height: 100vh;">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+      <h1 style="text-align: center;color:darkgreen">Choose Your role <br><span style="font-size: 10px;font-weight: bold">Admins get to approved first</span></h1>
+      <a href="{% url 'accounts:admin_signup' %}" class="btn-get-started btn-lg btn-block"><P style="font-size:30px;text-align:center;font-family:'Ink Free'">Professor</P></a>
+      <a href="{% url 'accounts:student_signup' %}" class="btn-get-started btn-lg btn-block"><P style="font-size:30px;text-align:center;font-family: 'Ink Free'">Student</P></a>
+    </div>
+  </section>
+{% endblock %}

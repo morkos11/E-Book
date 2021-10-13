@@ -19,12 +19,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from books import views
-
+import users
+import accounts
+import books
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='index'),
-    # path('books/',include('books.urls')),
+    path('user/',include('users.urls')),
+    path('account/',include('accounts.urls')),
+    path('books/',include('books.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
